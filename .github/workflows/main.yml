@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  google-repo-test:
+    runs-on: ubuntu-latest
+    name: A job to test google-repo-checkout
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - uses: ./
+      with:
+        repo-url: 'git@github.com:Javier-varez/manifest.git'
+    - run: ls -al
+      shell: bash
