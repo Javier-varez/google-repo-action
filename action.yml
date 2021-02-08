@@ -1,0 +1,16 @@
+name: 'Google Repo Checkout'
+description: 'Downloads a Google Repo'
+inputs:
+  repo-url:  # id of input
+    description: 'repo url'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Downloading repo from url"
+      shell: bash
+    - id: install google repo
+      run: curl https://storage.googleapis.com/git-repo-downloads/repo > repo && chmod +x repo
+      shell: bash
+    - run: mkdir -p repository && cd repository && repo init -u ${{ inputs.repo-url  }} && repo sync -c -d
+      shell: bash
