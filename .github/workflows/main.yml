@@ -9,6 +9,4 @@ jobs:
       uses: actions/checkout@v2
     - uses: ./
       with:
-        repo-url: 'git@github.com:Javier-varez/manifest.git'
-    - run: ls -al
-      shell: bash
+        repo-url: 'https://github.com/Javier-varez/manifest.git'

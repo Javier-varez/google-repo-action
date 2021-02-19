@@ -5,14 +5,7 @@ inputs:
     description: 'repo url'
     required: true
 runs:
-  using: "composite"
-  steps:
-    - run: echo "Downloading repo from url"
-      shell: bash
-    - run: ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/id_rsa -N ""
-      shell: bash
-    - id: install-google-repo
-      run: curl https://storage.googleapis.com/git-repo-downloads/repo > repo && chmod +x repo
-      shell: bash
-    - run: mkdir -p repository && cd repository && ../repo init -u ${{ inputs.repo-url  }} && ../repo sync -c -d
-      shell: bash
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.repo-url }}
