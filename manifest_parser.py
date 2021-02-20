@@ -4,6 +4,7 @@
 
 import xml.etree.ElementTree as ET
 
+
 def parse_project_node(project, defaults, remotes):
     """ Parses a project node """
     if 'revision' in project.attrib:
@@ -26,6 +27,7 @@ def parse_project_node(project, defaults, remotes):
         'remote': remote,
     }
 
+
 def parse_manifest(manifest_path, project_root):
     """ Parses a given manifest file. """
     projects = []
@@ -36,7 +38,8 @@ def parse_manifest(manifest_path, project_root):
         manifest_root = document.getroot()
         for node in manifest_root:
             if node.tag == 'include':
-                include_file = project_root + '/.repo/manifests/' + node.attrib['name']
+                include_file = project_root + '/.repo/manifests/' + \
+                               node.attrib['name']
                 projects.extend(parse_manifest(include_file, project_root))
             elif node.tag == 'project':
                 projects.append(parse_project_node(node, defaults, remotes))
@@ -54,6 +57,7 @@ def parse_manifest(manifest_path, project_root):
                         raise Exception(f"Can't find definition for {remote}")
                     defaults['remote'] = remotes[remote]
     return projects
+
 
 def parse_current_manifest(project_root):
     """ Parses the current manifest file for the selected project root """
