@@ -1,9 +1,18 @@
 name: 'Google Repo Checkout'
 description: 'Downloads a Google Repo'
 inputs:
-  repo-url:
-    description: 'Repository name with owner. For example, actions/checkout'
+  manifest-url:
+    description: 'Manifest repository name with owner. For example, actions/checkout'
     required: true
+  manifest-branch:
+    description: 'Manifest branch where to find the xml manifest file'
+    default: 'refs/heads/main'
+  manifest-file:
+    description: 'Manifest file (to override default.xml)'
+    default: 'default.xml'
+  manifest-group:
+    description: 'Selects the manifest group when syncing the code'
+    default: 'default'
   origin-repo:
     description: 'Origin repository with owner'
     default: ${{ github.repository }}
@@ -14,6 +23,9 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.repo-url }}
+    - ${{ inputs.manifest-url }}
+    - ${{ inputs.manifest-branch }}
+    - ${{ inputs.manifest-file }}
+    - ${{ inputs.manifest-group }}
     - ${{ inputs.checkout-deps }}
     - ${{ inputs.origin-repo }}

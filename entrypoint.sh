@@ -1,14 +1,19 @@
 #!/bin/sh -xe
 
 MANIFEST_URL="https://github.com/${1}"
-CHECKOUT_DEPENDENCIES=${2}
-ORIGIN_REPO=${3}
+MANIFEST_BRANCH="${2}"
+MANIFEST_FILE="${3}"
+MANIFEST_GROUP="${4}"
+CHECKOUT_DEPENDENCIES=${5}
+ORIGIN_REPO=${6}
 
 git config --global user.name "dummy"
 git config --global user.email "dummy@example.com"
 git config --global color.diff "white"
 
-repo init -u $MANIFEST_URL -q
+REPO_INIT_ARGS="-u ${MANIFEST_URL} -q -b ${MANIFEST_BRANCH} -m ${MANIFEST_FILE} -g ${MANIFEST_GROUP}"
+
+repo init ${REPO_INIT_ARGS}
 repo sync -c -d -j$(nproc) -q
 
 if [ "${CHECKOUT_DEPENDENCIES}" = "true" ]

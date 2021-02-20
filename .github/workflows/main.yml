@@ -9,4 +9,4 @@ jobs:
       uses: actions/checkout@v2
     - uses: ./
       with:
-        repo-url: 'Javier-varez/manifest'
+        manifest-url: 'Javier-varez/manifest'
