@@ -6,6 +6,7 @@ MANIFEST_FILE="${3}"
 MANIFEST_GROUP="${4}"
 CHECKOUT_DEPENDENCIES=${5}
 ORIGIN_REPO=${6}
+GENERATED_MANIFEST=${7}
 
 git config --global user.name "dummy"
 git config --global user.email "dummy@example.com"
@@ -19,6 +20,11 @@ repo sync -c -d -j$(nproc) -q
 if [ "${CHECKOUT_DEPENDENCIES}" = "true" ]
 then
   /tools/checkout_deps.py ${GITHUB_REF} ${ORIGIN_REPO}
+fi
+
+if [ ! -z "${GENERATED_MANIFEST}" ]
+then
+  repo manifest -r -o ${GENERATED_MANIFEST}
 fi
 
 chmod -R a+rw .

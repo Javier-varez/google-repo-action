@@ -29,6 +29,7 @@ jobs:
   * `manifest-file` select the specific file within the specified branch and provided manifest repo url.
   * `manifest-group` can be used to checkout a specific group or set of groups.
   * `checkout-deps` can be used to dowload interdependent changes in the context of presubmit testing.
+  * `generated-manifest` can be set if you want to generate a manifest with the checked-out frozen revisions of the repo.
 
 ## Downloading dependent changes during presubmit
 

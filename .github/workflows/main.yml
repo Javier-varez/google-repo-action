@@ -12,3 +12,10 @@ jobs:
     - uses: ./
       with:
         manifest-url: 'Javier-varez/manifest'
+        generated-manifest: 'manifest.xml'
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: manifest
+        path: manifest.xml
+        retention-days: 5

@@ -19,6 +19,9 @@ inputs:
   checkout-deps:
     description: 'Checkouts the dependencies for the origin repo and branch'
     default: false
+  generated-manifest:
+    description: 'Generates a manifest containing all frozen revisions for each repo. if left empty the manifest is not generated.'
+    default: ''
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -29,3 +32,4 @@ runs:
     - ${{ inputs.manifest-group }}
     - ${{ inputs.checkout-deps }}
     - ${{ inputs.origin-repo }}
+    - ${{ inputs.generated-manifest }}
