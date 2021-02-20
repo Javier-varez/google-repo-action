@@ -1,5 +1,7 @@
 ## Google-repo-action
 
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Javier-varez/google-repo-action/Checkout%20tests)
+
 This is a Github action to checkout multiple repositories managed with a single Manifest file. It does this by using the [Google-repo](https://gerrit.googlesource.com/git-repo/). This tool is commonly used with Gerrit. Although support for a normal git server like Github is not optimal, It still seems like a good option to manage multiple interdependent repositories.
 
 ## Using this action
