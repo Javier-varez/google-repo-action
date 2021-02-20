@@ -9,4 +9,4 @@ jobs:
       uses: actions/checkout@v2
     - uses: ./
       with:
-        repo-url: 'https://github.com/Javier-varez/manifest.git'
+        repo-url: 'Javier-varez/manifest'

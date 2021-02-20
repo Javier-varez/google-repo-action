@@ -8,6 +8,9 @@ RUN apt update && \
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo && \
     chmod +x /usr/bin/repo
 
+COPY checkout_deps.py /tools/checkout_deps.py
+COPY manifest_parser.py /tools/manifest_parser.py
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
