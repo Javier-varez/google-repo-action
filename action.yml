@@ -33,3 +33,6 @@ runs:
     - ${{ inputs.checkout-deps }}
     - ${{ inputs.origin-repo }}
     - ${{ inputs.generated-manifest }}
+branding:
+  icon: 'download-cloud'
+  color: 'blue'
